@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://7jaqcw7o2va7"]
+[gd_scene load_steps=6 format=3 uid="uid://7jaqcw7o2va7"]
 
 [ext_resource type="PackedScene" uid="uid://d3uut1ox1p8jj" path="res://scenes/Player.tscn" id="1_76aya"]
 [ext_resource type="Script" path="res://scripts/StandHere.gd" id="2_dhkhv"]
+[ext_resource type="Script" path="res://scripts/dynamic_camera.gd" id="2_y5eh6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xtd7"]
 size = Vector2(40, 40)
@@ -19,6 +20,10 @@ text = "testing"
 [node name="Player" parent="." instance=ExtResource("1_76aya")]
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+script = ExtResource("2_y5eh6")
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(222, 212)
