@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://7jaqcw7o2va7"]
+[gd_scene load_steps=5 format=3 uid="uid://7jaqcw7o2va7"]
 
 [ext_resource type="PackedScene" uid="uid://d3uut1ox1p8jj" path="res://scenes/Player.tscn" id="1_76aya"]
+[ext_resource type="Script" path="res://scripts/StandHere.gd" id="2_dhkhv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xtd7"]
 size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xgd1"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,8 +18,11 @@ text = "testing"
 
 [node name="Player" parent="." instance=ExtResource("1_76aya")]
 
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(222, 212)
+collision_layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Wall"]
 offset_right = 40.0
@@ -29,6 +35,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 
 [node name="Wall2" type="StaticBody2D" parent="."]
 position = Vector2(488, 54)
+collision_layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Wall2"]
 offset_right = 40.0
@@ -41,6 +48,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 
 [node name="Wall3" type="StaticBody2D" parent="."]
 position = Vector2(659, 461)
+collision_layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Wall3"]
 offset_right = 40.0
@@ -53,6 +61,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 
 [node name="Wall4" type="StaticBody2D" parent="."]
 position = Vector2(925, 303)
+collision_layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Wall4"]
 offset_right = 40.0
@@ -65,6 +74,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 
 [node name="Wall5" type="StaticBody2D" parent="."]
 position = Vector2(103, 710)
+collision_layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Wall5"]
 offset_right = 40.0
@@ -77,6 +87,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 
 [node name="Wall6" type="StaticBody2D" parent="."]
 position = Vector2(369, 552)
+collision_layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Wall6"]
 offset_right = 40.0
@@ -89,6 +100,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 
 [node name="Wall7" type="StaticBody2D" parent="."]
 position = Vector2(540, 959)
+collision_layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Wall7"]
 offset_right = 40.0
@@ -101,6 +113,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 
 [node name="Wall8" type="StaticBody2D" parent="."]
 position = Vector2(806, 801)
+collision_layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Wall8"]
 offset_right = 40.0
@@ -110,3 +123,35 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall8"]
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_8xtd7")
+
+[node name="Stand here" type="Area2D" parent="."]
+position = Vector2(769, 402)
+collision_layer = 0
+script = ExtResource("2_dhkhv")
+
+[node name="Text" type="RichTextLabel" parent="Stand here"]
+offset_left = -38.0
+offset_top = -13.0
+offset_right = 105.0
+offset_bottom = 27.0
+text = "stand here"
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stand here"]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_2xgd1")
+
+[node name="Greeting" type="RichTextLabel" parent="Stand here"]
+visible = false
+offset_left = -26.0
+offset_top = -115.0
+offset_right = 14.0
+offset_bottom = -75.0
+scale = Vector2(3, 3)
+text = "oh hi"
+
+[node name="LevelManager" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="Stand here" to="Stand here" method="_on_area_entered"]
+[connection signal="body_entered" from="Stand here" to="Stand here" method="_on_body_entered"]
+[connection signal="body_exited" from="Stand here" to="Stand here" method="_on_body_exited"]
