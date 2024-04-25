@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://7jaqcw7o2va7"]
+
+[ext_resource type="PackedScene" uid="uid://d3uut1ox1p8jj" path="res://scenes/Player.tscn" id="1_76aya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xtd7"]
+size = Vector2(40, 40)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 184.0
+offset_bottom = 40.0
+bbcode_enabled = true
+text = "testing"
+
+[node name="Player" parent="." instance=ExtResource("1_76aya")]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(222, 212)
+
+[node name="ColorRect" type="ColorRect" parent="Wall"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_8xtd7")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(488, 54)
+
+[node name="ColorRect" type="ColorRect" parent="Wall2"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_8xtd7")
+
+[node name="Wall3" type="StaticBody2D" parent="."]
+position = Vector2(659, 461)
+
+[node name="ColorRect" type="ColorRect" parent="Wall3"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_8xtd7")
+
+[node name="Wall4" type="StaticBody2D" parent="."]
+position = Vector2(925, 303)
+
+[node name="ColorRect" type="ColorRect" parent="Wall4"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_8xtd7")
+
+[node name="Wall5" type="StaticBody2D" parent="."]
+position = Vector2(103, 710)
+
+[node name="ColorRect" type="ColorRect" parent="Wall5"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall5"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_8xtd7")
+
+[node name="Wall6" type="StaticBody2D" parent="."]
+position = Vector2(369, 552)
+
+[node name="ColorRect" type="ColorRect" parent="Wall6"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall6"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_8xtd7")
+
+[node name="Wall7" type="StaticBody2D" parent="."]
+position = Vector2(540, 959)
+
+[node name="ColorRect" type="ColorRect" parent="Wall7"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall7"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_8xtd7")
+
+[node name="Wall8" type="StaticBody2D" parent="."]
+position = Vector2(806, 801)
+
+[node name="ColorRect" type="ColorRect" parent="Wall8"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall8"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_8xtd7")
