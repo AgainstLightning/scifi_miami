@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bujya581elnxo"]
+
+[ext_resource type="Script" path="res://scripts/Gun.gd" id="1_yyiro"]
+
+[node name="Gun" type="Marker2D"]
+position = Vector2(50, 50)
+script = ExtResource("1_yyiro")

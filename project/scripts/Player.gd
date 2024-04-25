@@ -24,7 +24,10 @@ func _physics_process(delta):
 		perform_roll(delta)
 		
 	rotate_towards_mouse(delta)
-
+	
+	if Input.is_action_just_pressed("shoot") and not rolling:
+		$Gun.shoot()
+	
 func start_roll():
 	get_input_axis()
 	roll_direction = axis.normalized()
