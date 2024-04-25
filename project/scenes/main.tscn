@@ -11,15 +11,67 @@ size = Vector2(40, 40)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
 offset_right = 184.0
 offset_bottom = 40.0
 bbcode_enabled = true
 text = "testing"
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1329.0
+offset_bottom = 2042.0
+color = Color(0.435294, 0, 1, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 1287.0
+offset_right = 2616.0
+offset_bottom = 2042.0
+color = Color(0.435294, 0, 0.101961, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 2585.0
+offset_right = 3914.0
+offset_bottom = 2042.0
+color = Color(0.137246, 0.245569, 0.23238, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_top = 2039.0
+offset_right = 1329.0
+offset_bottom = 4081.0
+color = Color(0.675842, 0.182262, 0.40589, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 1287.0
+offset_top = 2039.0
+offset_right = 2616.0
+offset_bottom = 4081.0
+color = Color(0.0855642, 0.228358, 0.372442, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 2585.0
+offset_top = 2039.0
+offset_right = 3914.0
+offset_bottom = 4081.0
+color = Color(0.31069, 0.192657, 0.0489934, 1)
+
 [node name="Player" parent="." instance=ExtResource("1_76aya")]
+position = Vector2(1081, 675)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
 limit_smoothed = true
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
