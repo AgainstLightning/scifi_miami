@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxgiqldaxrysv"]
+
+[ext_resource type="Script" path="res://temp/Player.gd" id="1_6uf7m"]
+[ext_resource type="PackedScene" uid="uid://b64lfs6mqlmru" path="res://temp/Wall.tscn" id="1_rxkee"]
+[ext_resource type="Texture2D" uid="uid://di3fnib3sqnnp" path="res://assets/icon.svg" id="2_f4xlc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7bv6p"]
+
+[node name="BasicGun" type="Node2D"]
+
+[node name="Wall" parent="." instance=ExtResource("1_rxkee")]
+position = Vector2(744, -73)
+
+[node name="Wall2" parent="." instance=ExtResource("1_rxkee")]
+position = Vector2(-820, -73)
+
+[node name="Wall3" parent="." instance=ExtResource("1_rxkee")]
+position = Vector2(744, -444)
+
+[node name="Wall4" parent="." instance=ExtResource("1_rxkee")]
+position = Vector2(-820, -444)
+
+[node name="Wall5" parent="." instance=ExtResource("1_rxkee")]
+position = Vector2(744, 314)
+
+[node name="Wall6" parent="." instance=ExtResource("1_rxkee")]
+position = Vector2(-820, 314)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_6uf7m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+rotation = 1.5708
+texture = ExtResource("2_f4xlc")
+
+[node name="Camera2D" type="Camera2D" parent="Player/Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(6, 6)
+shape = SubResource("CircleShape2D_7bv6p")
+
+[node name="Gun" type="Marker2D" parent="Player"]
+position = Vector2(62.91, 2.74989e-06)
+rotation = 1.5708

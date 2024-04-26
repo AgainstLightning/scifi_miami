@@ -11,46 +11,47 @@ size = Vector2(40, 40)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Control" type="Control" parent="."]
+[node name="background" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+[node name="RichTextLabel" type="RichTextLabel" parent="background"]
+layout_mode = 0
 offset_right = 184.0
 offset_bottom = 40.0
 bbcode_enabled = true
 text = "testing"
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="background"]
 layout_mode = 0
 offset_right = 1329.0
 offset_bottom = 2042.0
 color = Color(0.435294, 0, 1, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Control"]
+[node name="ColorRect2" type="ColorRect" parent="background"]
 layout_mode = 0
 offset_left = 1287.0
 offset_right = 2616.0
 offset_bottom = 2042.0
 color = Color(0.435294, 0, 0.101961, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="Control"]
+[node name="ColorRect3" type="ColorRect" parent="background"]
 layout_mode = 0
 offset_left = 2585.0
 offset_right = 3914.0
 offset_bottom = 2042.0
 color = Color(0.137246, 0.245569, 0.23238, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="Control"]
+[node name="ColorRect4" type="ColorRect" parent="background"]
 layout_mode = 0
 offset_top = 2039.0
 offset_right = 1329.0
 offset_bottom = 4081.0
 color = Color(0.675842, 0.182262, 0.40589, 1)
 
-[node name="ColorRect5" type="ColorRect" parent="Control"]
+[node name="ColorRect5" type="ColorRect" parent="background"]
 layout_mode = 0
 offset_left = 1287.0
 offset_top = 2039.0
@@ -58,7 +59,7 @@ offset_right = 2616.0
 offset_bottom = 4081.0
 color = Color(0.0855642, 0.228358, 0.372442, 1)
 
-[node name="ColorRect6" type="ColorRect" parent="Control"]
+[node name="ColorRect6" type="ColorRect" parent="background"]
 layout_mode = 0
 offset_left = 2585.0
 offset_top = 2039.0
@@ -80,6 +81,7 @@ script = ExtResource("2_y5eh6")
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2(222, 212)
 collision_layer = 2
+collision_mask = 5
 
 [node name="ColorRect" type="ColorRect" parent="Wall"]
 offset_right = 40.0
@@ -93,6 +95,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 [node name="Wall2" type="StaticBody2D" parent="."]
 position = Vector2(488, 54)
 collision_layer = 2
+collision_mask = 5
 
 [node name="ColorRect" type="ColorRect" parent="Wall2"]
 offset_right = 40.0
@@ -106,6 +109,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 [node name="Wall3" type="StaticBody2D" parent="."]
 position = Vector2(659, 461)
 collision_layer = 2
+collision_mask = 5
 
 [node name="ColorRect" type="ColorRect" parent="Wall3"]
 offset_right = 40.0
@@ -119,6 +123,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 [node name="Wall4" type="StaticBody2D" parent="."]
 position = Vector2(925, 303)
 collision_layer = 2
+collision_mask = 5
 
 [node name="ColorRect" type="ColorRect" parent="Wall4"]
 offset_right = 40.0
@@ -132,6 +137,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 [node name="Wall5" type="StaticBody2D" parent="."]
 position = Vector2(103, 710)
 collision_layer = 2
+collision_mask = 5
 
 [node name="ColorRect" type="ColorRect" parent="Wall5"]
 offset_right = 40.0
@@ -145,6 +151,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 [node name="Wall6" type="StaticBody2D" parent="."]
 position = Vector2(369, 552)
 collision_layer = 2
+collision_mask = 5
 
 [node name="ColorRect" type="ColorRect" parent="Wall6"]
 offset_right = 40.0
@@ -158,6 +165,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 [node name="Wall7" type="StaticBody2D" parent="."]
 position = Vector2(540, 959)
 collision_layer = 2
+collision_mask = 5
 
 [node name="ColorRect" type="ColorRect" parent="Wall7"]
 offset_right = 40.0
@@ -171,6 +179,7 @@ shape = SubResource("RectangleShape2D_8xtd7")
 [node name="Wall8" type="StaticBody2D" parent="."]
 position = Vector2(806, 801)
 collision_layer = 2
+collision_mask = 5
 
 [node name="ColorRect" type="ColorRect" parent="Wall8"]
 offset_right = 40.0

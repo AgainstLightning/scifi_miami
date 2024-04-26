@@ -1,17 +1,28 @@
-extends Node2D
+#CharacterBody and RigidBody would also work, but you probably don't need their extra functionality
+extends StaticBody2D    
+class_name Bullet
 
-@export var SPEED = 2500
-var direction = Vector2.ZERO
+var speed = 2500
+  
+#You can use this signal to alert other nodes that the bullet hit something
+signal hit_something  
 
-func _ready():
-	set_as_top_level(true)
+#Variable for keeping track of it's velocity        
+var velocity:Vector2    
 
-func _process(delta):
-	position += direction * SPEED * delta  # Move in the set direction
+#Set the velocity of the bullet  
+#Call this right after creating the bullet to make it start moving
+func set_direction(direction:Vector2):    
+	velocity = direction * speed    
 
-func set_direction(dir: Vector2):
-	direction = dir.normalized()
-	rotation = dir.angle_to(Vector2.RIGHT)  # This aligns the bullet's forward direction with the trajectory
+#This is automatically called every physics update.
+func _physics_process(delta):  
+	#Move the bullet using it's previously defined velocity  
+	#And save any collisions that may happen.
+	var collision = move_and_collide(velocity)    
 
-func _on_visible_on_screen_enabler_2d_screen_exited():
-	queue_free()
+	#If it hit something, emit the signal from earlier
+	if collision != null:    
+		hit_something.emit()    
+		#Then delete the bullet  
+		queue_free()  

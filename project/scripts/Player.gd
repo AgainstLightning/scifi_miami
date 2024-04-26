@@ -10,7 +10,6 @@ var rolling = false
 var roll_timer = 0.0
 var roll_direction = Vector2.ZERO
 
-
 @onready var axis = Vector2.ZERO
 
 func _physics_process(delta):
