@@ -1,39 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxgiqldaxrysv"]
+[gd_scene load_steps=10 format=3 uid="uid://bxgiqldaxrysv"]
 
-[ext_resource type="Script" path="res://temp/Player.gd" id="1_6uf7m"]
+[ext_resource type="Script" path="res://temp/signalBus.gd" id="1_h4hjd"]
 [ext_resource type="PackedScene" uid="uid://b64lfs6mqlmru" path="res://temp/Wall.tscn" id="1_rxkee"]
+[ext_resource type="Script" path="res://temp/LevelManager.gd" id="1_yw1c2"]
 [ext_resource type="Texture2D" uid="uid://di3fnib3sqnnp" path="res://assets/icon.svg" id="2_f4xlc"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="2_xdxpi"]
+[ext_resource type="Script" path="res://temp/enemySpawner.gd" id="5_k83ef"]
+[ext_resource type="FontFile" uid="uid://toksrnfdk1q8" path="res://assets/Montserrat-Regular.ttf" id="7_hkw15"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7bv6p"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mdpux"]
+vertices = PackedVector2Array(-944, -530, 295, -530, -750, -426, -814, -421, 359, -531, 957, -531, 802, -430, 738, -425, -946, 531, -816, 406, -434, 531, -752, 406, 961, 531, 800, 402, -371, 531, 736, 402, -434, -40, -370, -45, 295, -46, 359, -46)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 0, 3, 9), PackedInt32Array(10, 8, 9, 11), PackedInt32Array(6, 5, 12, 13), PackedInt32Array(13, 12, 14, 15), PackedInt32Array(16, 10, 11, 2), PackedInt32Array(16, 2, 1, 17), PackedInt32Array(17, 1, 18, 14), PackedInt32Array(19, 4, 7, 15), PackedInt32Array(19, 15, 14, 18)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-954, -540, -957, 542, 971, 541, 967, -542)])
+parsed_geometry_type = 0
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="BasicGun" type="Node2D"]
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Score" type="RichTextLabel" parent="UI"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 639.0
+offset_bottom = 336.0
+theme_override_colors/default_color = Color(1, 0.694118, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/normal_font = ExtResource("7_hkw15")
+theme_override_font_sizes/normal_font_size = 72
+text = "0"
+
+[node name="LevelManager" type="Node2D" parent="."]
+script = ExtResource("1_yw1c2")
+
+[node name="SignalBus" type="Node2D" parent="."]
+script = ExtResource("1_h4hjd")
+
 [node name="Wall" parent="." instance=ExtResource("1_rxkee")]
-position = Vector2(744, -73)
+position = Vector2(768, -408)
+scale = Vector2(1, 6)
 
 [node name="Wall2" parent="." instance=ExtResource("1_rxkee")]
-position = Vector2(-820, -73)
+position = Vector2(-796, -408)
+scale = Vector2(1, 6)
 
 [node name="Wall3" parent="." instance=ExtResource("1_rxkee")]
-position = Vector2(744, -444)
+position = Vector2(321, -857)
+scale = Vector2(1, 6)
 
 [node name="Wall4" parent="." instance=ExtResource("1_rxkee")]
-position = Vector2(-820, -444)
-
-[node name="Wall5" parent="." instance=ExtResource("1_rxkee")]
-position = Vector2(744, 314)
-
-[node name="Wall6" parent="." instance=ExtResource("1_rxkee")]
-position = Vector2(-820, 314)
+position = Vector2(-410, -29)
+scale = Vector2(1, 6)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_6uf7m")
+collision_mask = 2
+script = ExtResource("2_xdxpi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 rotation = 1.5708
 texture = ExtResource("2_f4xlc")
-
-[node name="Camera2D" type="Camera2D" parent="Player/Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 scale = Vector2(6, 6)
@@ -42,3 +71,49 @@ shape = SubResource("CircleShape2D_7bv6p")
 [node name="Gun" type="Marker2D" parent="Player"]
 position = Vector2(62.91, 2.74989e-06)
 rotation = 1.5708
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+rotation = 1.5708
+zoom = Vector2(0.75, 0.75)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_mdpux")
+use_edge_connections = false
+
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
+visible = false
+polygon = PackedVector2Array(-804, -412, -806, 396, -762, 396, -760, -415)
+
+[node name="Polygon2D3" type="Polygon2D" parent="NavigationRegion2D"]
+visible = false
+position = Vector2(380, 381)
+polygon = PackedVector2Array(-804, -412, -806, 396, -762, 396, -760, -415)
+
+[node name="Polygon2D2" type="Polygon2D" parent="NavigationRegion2D"]
+visible = false
+position = Vector2(1552, -4)
+polygon = PackedVector2Array(-804, -412, -806, 396, -762, 396, -760, -415)
+
+[node name="Polygon2D4" type="Polygon2D" parent="NavigationRegion2D"]
+visible = false
+position = Vector2(1111, -452)
+polygon = PackedVector2Array(-804, -412, -806, 396, -762, 396, -760, -415)
+
+[node name="EnemySpawner" type="Marker2D" parent="."]
+position = Vector2(-885, -348)
+script = ExtResource("5_k83ef")
+
+[node name="EnemySpawner" type="Timer" parent="EnemySpawner"]
+wait_time = 3.0
+autostart = true
+
+[node name="EnemySpawner2" type="Marker2D" parent="."]
+position = Vector2(-885, -504.06)
+script = ExtResource("5_k83ef")
+
+[node name="EnemySpawner" type="Timer" parent="EnemySpawner2"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="EnemySpawner/EnemySpawner" to="EnemySpawner" method="_on_enemy_spawner_timeout"]
+[connection signal="timeout" from="EnemySpawner2/EnemySpawner" to="EnemySpawner2" method="_on_enemy_spawner_timeout"]

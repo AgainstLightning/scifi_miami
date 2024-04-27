@@ -12,23 +12,33 @@ var roll_direction = Vector2.ZERO
 
 @onready var axis = Vector2.ZERO
 
+var bullet = preload("res://temp/Bullet.tscn")
+
 func _physics_process(delta):
+	roll_or_move(delta)
+	rotate_towards_mouse(delta)
+	check_for_shoot()
+
+func check_for_shoot():
+	if Input.is_action_just_pressed("shoot") and not rolling:
+		var bullet_instance = bullet.instantiate()
+		print(bullet_instance)
+		get_tree().root.add_child(bullet_instance)
+		bullet_instance.global_position = $Gun.global_position
+		var direction_to_mouse = (get_global_mouse_position() - global_position).normalized()
+		bullet_instance.launch(direction_to_mouse, 40)
+		
+func roll_or_move(delta):
 	if Input.is_action_just_pressed("roll") and not rolling:
-		print("roll!")
 		start_roll()
 		
 	if not rolling:
 		move(delta)
 	else:
 		perform_roll(delta)
-		
-	rotate_towards_mouse(delta)
-	
-	if Input.is_action_just_pressed("shoot") and not rolling:
-		$Gun.shoot()
 	
 func start_roll():
-	get_input_axis()
+	update_input_axis()
 	roll_direction = axis.normalized()
 	if roll_direction.length() == 0:
 		roll_direction = Vector2(1, 0) # Default to rolling right if no direction is pressed
@@ -45,23 +55,19 @@ func perform_roll(delta):
 	move_and_slide()
 
 func rotate_towards_mouse(delta):
-	var mouse_pos = get_global_mouse_position()
-	var target_angle = (mouse_pos - global_position).angle()
+	var target_angle = (get_global_mouse_position() - global_position).angle()
 	var diff_angle = wrapf(target_angle - rotation, -PI, PI)
-	
-	# Determine the shortest rotation direction
 	var rotation_direction = sign(diff_angle)
-	
-	# Calculate the amount to rotate this frame, not exceeding MAX_ROTATION_SPEED
 	var rotation_amount = min(MAX_ROTATION_SPEED * delta, abs(diff_angle))
+	
 	rotation += rotation_amount * rotation_direction
 
-func get_input_axis():
+func update_input_axis():
 	axis.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	axis.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	
 func move(delta):
-	get_input_axis()
+	update_input_axis()
 	
 	if axis == Vector2.ZERO:
 		apply_friction(FRICTION * delta)
@@ -80,4 +86,3 @@ func apply_friction(amount):
 func apply_movement(accel):
 	velocity += accel
 	velocity = velocity.limit_length(MAX_SPEED)
-		
