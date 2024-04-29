@@ -1,0 +1,38 @@
+{
+	"enemies": {
+		"common": [
+			{
+				"health": 5,
+				"speed": 100,
+				"size": 1.5,
+				"color": "BLUE"
+			},
+			{
+				"health": 2,
+				"speed": 200,
+				"size": 0.5,
+				"color": "RED"
+			},
+			{
+				"health": 1,
+				"speed": 400,
+				"size": 0.25,
+				"color": "GREEN"
+			},
+			{
+				"health": 1,
+				"speed": 600,
+				"size": 3,
+				"color": "PURPLE"
+			}
+		],
+		"uncommon": [
+			{
+				"health": 20,
+				"speed": 200,
+				"size": 0.5,
+				"color": "GOLD"
+			}
+		]
+	}
+}

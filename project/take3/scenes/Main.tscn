@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvnvxj6nfkp5j"]
+
+[ext_resource type="Script" path="res://take3/scripts/spawner.gd" id="1_s4kei"]
+
+[node name="World" type="Node2D"]
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(998, 997)
+script = ExtResource("1_s4kei")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 2.0
+autostart = true
+
+[node name="Spawner2" type="Node2D" parent="."]
+position = Vector2(122, 990)
+script = ExtResource("1_s4kei")
+
+[node name="Timer" type="Timer" parent="Spawner2"]
+wait_time = 2.0
+autostart = true
+
+[node name="Spawner3" type="Node2D" parent="."]
+position = Vector2(1311, 999)
+script = ExtResource("1_s4kei")
+
+[node name="Timer" type="Timer" parent="Spawner3"]
+wait_time = 2.0
+autostart = true
+
+[node name="Spawner4" type="Node2D" parent="."]
+position = Vector2(435, 992)
+script = ExtResource("1_s4kei")
+
+[node name="Timer" type="Timer" parent="Spawner4"]
+wait_time = 2.0
+autostart = true
+
+[node name="Spawner5" type="Node2D" parent="."]
+position = Vector2(1604, 999)
+script = ExtResource("1_s4kei")
+
+[node name="Timer" type="Timer" parent="Spawner5"]
+wait_time = 2.0
+autostart = true
+
+[node name="Spawner6" type="Node2D" parent="."]
+position = Vector2(728, 992)
+script = ExtResource("1_s4kei")
+
+[node name="Timer" type="Timer" parent="Spawner6"]
+wait_time = 2.0
+autostart = true
+
+[node name="LevelManager" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spawner2/Timer" to="Spawner2" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spawner3/Timer" to="Spawner3" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spawner4/Timer" to="Spawner4" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spawner5/Timer" to="Spawner5" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spawner6/Timer" to="Spawner6" method="_on_timer_timeout"]
