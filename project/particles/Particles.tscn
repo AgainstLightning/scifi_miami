@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://dsa148b3tcpil"]
+[gd_scene load_steps=2 format=3 uid="uid://dsa148b3tcpil"]
+
+[ext_resource type="Script" path="res://particles/Particles.gd" id="1_w35aj"]
 
 [node name="Particles" type="Node2D"]
+script = ExtResource("1_w35aj")
